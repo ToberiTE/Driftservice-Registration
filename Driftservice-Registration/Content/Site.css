@@ -1,0 +1,55 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.input-group {
+    max-width: 310px;
+}
+
+#datebtn {
+    border-bottom-right-radius: .4rem;
+    border-top-right-radius: .4rem;
+    background-color: ghostwhite;
+}
+
+input.form-block,
+select.form-block,
+textarea.form-block {
+    max-width: none;
+}
+
+.row {
+    padding-bottom: 1rem;
+}
+
+#rc-imageselect, #recaptcha {
+    transform: scale(0.93);
+    -webkit-transform: scale(0.93);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+}
+
+@media screen and (max-width: 324px) {
+    #rc-imageselect, #recaptcha {
+        transform: scale(0.85);
+        -webkit-transform: scale(0.85);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
+}
