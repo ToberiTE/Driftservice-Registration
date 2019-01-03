@@ -17,23 +17,23 @@ namespace Driftservice_Registration.Models
 
         public int ContactID { get; set; }
 
-        [Required(ErrorMessage = "* Firstname required.")]
-        [DisplayName("Firstname *")]
+        [Required(ErrorMessage = "* Förnamn krävs.")]
+        [DisplayName("Förnamn *")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "* Lastname required.")]
-        [DisplayName("Lastname *")]
+        [Required(ErrorMessage = "* Efternamn krävs.")]
+        [DisplayName("Efternamn *")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "* Business field must not be empty.")]
-        [DisplayName("Business *")]
+        [Required(ErrorMessage = "* Företag krävs.")]
+        [DisplayName("Företag *")]
         public string Business { get; set; }
 
         [EmailAddress]
         public string Email { get; set; }
 
         [Phone]
-        [DisplayName("Phone")]
+        [DisplayName("Telefon")]
         public string PhoneNumber { get; set; }
 
         [NotMapped]
@@ -42,15 +42,15 @@ namespace Driftservice_Registration.Models
         [NotMapped]
         public bool EmailChecked{ get; set; }
 
-        [DisplayName("Contact method *")]
+        [DisplayName("Kontaktmetod *")]
         public int NotificationType { get; set; }
 
         public Guid ContactGuid { get; set; }
 
+        [DisplayName("Språk")]
         public int? Language { get; set; }
 
-        [Required(ErrorMessage = "* Select a date.")]
-        [DisplayName("Date *")]
+        [DisplayName("Datum")]
         public DateTime? RegDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

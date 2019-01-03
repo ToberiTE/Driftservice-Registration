@@ -91,7 +91,7 @@ C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registratio
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\obj\Debug\Driftservice-Registration.csproj.CopyComplete
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\obj\Debug\Driftservice-Registration.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\obj\Debug\Driftservice-Registration.pdb
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Security.Cryptography.Primitives.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.ValueTuple.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.IO.FileSystem.dll

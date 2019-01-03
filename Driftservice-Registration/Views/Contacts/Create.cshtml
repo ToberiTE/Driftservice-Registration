@@ -13,93 +13,123 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal form-control-feedback">
+<div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Business, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Business, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Business, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Business, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    @Html.EditorFor(model => model.Business, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Business, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NotificationType, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    <div class="form-check" style="margin-top: 5px;">
+                        <input type="checkbox" name="EmailChecked" value="true" /><label style="margin-left: 5px; margin-right: 10px">Email</label>
+                        <input type="checkbox" name="SmsChecked" value="true" /><label style="margin-left: 5px">Sms</label><br />
+                        @Html.ValidationMessageFor(model => model.NotificationType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="col-md-10 col-lg-8">
+                    @Html.DropDownListFor(m => m.Language, new SelectListItem[]{
+                    new SelectListItem() {Text = "Svenska", Value="1"},
+                    new SelectListItem() {Text = "Engelska", Value="2"},
+                    new SelectListItem() {Text = "Tyska", Value="3"}}, new { @style = "width: 100px; height: 25px; margin-top: 5px;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RegDate, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="input-group col-md-10 col-lg-8" id="datetoggle">
+                    @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="btn btn-default input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(model => model.NotificationType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="form-check" style="margin-top: 5px;">
-                <input type="checkbox" name="EmailChecked" value="true" /><label style="margin-left: 5px; margin-right: 10px">Email</label>
-                <input type="checkbox" name="SmsChecked" value="true" /><label style="margin-left: 5px">Sms</label><br />
-                @Html.ValidationMessageFor(model => model.NotificationType, "", new { @class = "text-danger" })
+
+        <div class="col-md-6 col-lg-6">
+            <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+                <div class="row">
+                    <h3>Tjänster</h3>
+                </div>
+                <div class="row">
+                    <h4 style="text-decoration-line: underline;">Mail</h4>
+                    <img src="~/Content/icons/exchange.png" style="width: 190px; height: 40px; padding-right: 20px;" />
+                    <img src="~/Content/icons/mdaemon.png" style="width: 180px; height: 45px;" />
+                </div>
+                <hr />
+                <div class="row">
+                    <h4 style="text-decoration-line: underline;">Nät</h4>
+                    <img src="~/Content/icons/lan.png" style="width: 80px; height: 60px; padding-right: 20px;" />
+                    <img src="~/Content/icons/stadsnät.png" style="width: 80px; height: 80px;" />
+                </div>
+                <hr />
+                <div class="row">
+                    <h4 style="text-decoration-line: underline;">CMS</h4>
+                    <img src="~/Content/icons/corecms.png" style="width: 180px; height: 35px; padding-right: 20px;" />
+                    <img src="~/Content/icons/wordpress.png" style="width: 100px; height: 60px;" />
+                </div>
+                <hr />
             </div>
         </div>
     </div>
-
-    <div class="row">
-        @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Language, new SelectListItem[]{
-            new SelectListItem() {Text = "Svenska", Value="1"},
-            new SelectListItem() {Text = "English", Value="2"} }, new { @style = "width: 100px; height: 25px; margin-top: 5px;" })
-        </div>
-    </div>
-    
     <div class="form-group">
-        @Html.LabelFor(model => model.RegDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="input-group col-md-10">
-            @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
-            <span class="btn btn-default input-group-addon" id="datebtn"><i class="glyphicon glyphicon-calendar"></i></span>
-            @Html.ValidationMessageFor(model => model.RegDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10" id="recaptcha">
+        <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10" id="recaptcha">
             @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
             @Html.ValidationMessage("reCAPTCHA", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <p>* fields are required.</p>
-            <input type="submit" value="Submit" class="btn btn-danger btn-block" />
+        <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+            <p>* fält krävs.</p>
+            <input type="submit" value="Registrera" class="btn btn-danger btn-block" />
         </div>
     </div>
-
 </div>
+
 }
 
 @section Scripts {

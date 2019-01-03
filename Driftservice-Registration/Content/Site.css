@@ -1,4 +1,9 @@
-﻿body {
+﻿h2 {
+    text-align: center;
+    width: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -34,10 +39,6 @@ textarea.form-block {
     max-width: none;
 }
 
-.row {
-    padding-bottom: 1rem;
-}
-
 #rc-imageselect, #recaptcha {
     transform: scale(0.93);
     -webkit-transform: scale(0.93);
@@ -51,5 +52,30 @@ textarea.form-block {
         -webkit-transform: scale(0.85);
         transform-origin: 0 0;
         -webkit-transform-origin: 0 0;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+    img {
+        margin-bottom: 1.5rem;
     }
 }

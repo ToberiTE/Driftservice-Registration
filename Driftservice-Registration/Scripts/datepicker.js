@@ -1,7 +1,9 @@
-﻿$("#datepicker").datepicker({
-    dateFormat: 'yy-mm-dd'
-});
+﻿$(function () {
+    $("#datepicker").datepicker({
+        dateFormat: "dd/mm/yy"
+    });
 
-$(".input-group-addon").click(function () {
-    $("#datepicker").datepicker("show");
+    $("#datetoggle").click(function () {
+        $("#datepicker").datepicker('show');
+    });
 });

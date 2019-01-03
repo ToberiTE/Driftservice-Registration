@@ -169,6 +169,21 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\alerts\custom.png" />
+    <Content Include="Content\alerts\danger.png" />
+    <Content Include="Content\alerts\default.png" />
+    <Content Include="Content\alerts\info.png" />
+    <Content Include="Content\alerts\saving.gif" />
+    <Content Include="Content\alerts\success.png" />
+    <Content Include="Content\alerts\warning.png" />
+    <Content Include="Content\icons\stadsnät.png" />
+    <Content Include="Content\icons\corecms.png" />
+    <Content Include="Content\icons\lan.png" />
+    <Content Include="Content\icons\mdaemon.png" />
+    <Content Include="Content\icons\exchange.png" />
+    <Content Include="Content\icons\wordpress.png" />
+    <Content Include="Content\myalert-theme.min.css" />
+    <Content Include="Content\myalert.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -233,6 +248,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\myalert.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config">
@@ -249,7 +265,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
-    <Content Include="Views\Contacts\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

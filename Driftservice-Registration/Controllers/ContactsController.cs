@@ -3,9 +3,6 @@ using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
 using System.Net;
 using System.Net.Mail;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -39,30 +36,30 @@ namespace Driftservice_Registration.Controllers
 
             if (!contact.EmailChecked && !contact.SmsChecked)
             {
-                ModelState.AddModelError("NotificationType", "* Select atleast one contact method.");
+                ModelState.AddModelError("NotificationType", "* Välj minst en kontaktmetod.");
                 return View(contact);
             }
-            if (contact.EmailChecked && contact.SmsChecked)
+            if (contact.EmailChecked && contact.SmsChecked && string.IsNullOrEmpty(contact.Email) && string.IsNullOrEmpty(contact.PhoneNumber))
             {
-                ModelState.AddModelError("Email", "* Email contact method requires an email.");
-                ModelState.AddModelError("PhoneNumber", "* Sms contact method requires a phone number.");
+                ModelState.AddModelError("Email", "* Vald kontaktmetod kräver en email.");
+                ModelState.AddModelError("PhoneNumber", "* Vald kontaktmetod kräver ett telefonnummer.");
                 return View(contact);
             }
             if (contact.SmsChecked && string.IsNullOrEmpty(contact.PhoneNumber))
             {
-                ModelState.AddModelError("PhoneNumber", "* Sms contact method requires a phone number.");
+                ModelState.AddModelError("PhoneNumber", "* Vald kontaktmetod kräver ett telefonnummer.");
                 return View(contact);
             }
             if (contact.EmailChecked && string.IsNullOrEmpty(contact.Email))
             {
-                ModelState.AddModelError("Email", "* Email contact method requires an email.");
+                ModelState.AddModelError("Email", "* Vald kontaktmetod kräver en email.");
                 return View(contact);
             }
 
             RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
             if (string.IsNullOrEmpty(recaptchaHelper.Response))
             {
-                ModelState.AddModelError("reCAPTCHA", "* The reCAPTCHA is incomplete.");
+                ModelState.AddModelError("reCAPTCHA", "* reCAPTCHA error.");
                 return View(contact);
             }
             else
@@ -70,14 +67,14 @@ namespace Driftservice_Registration.Controllers
                 RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
                 if (recaptchaResult != RecaptchaVerificationResult.Success)
                 {
-                    ModelState.AddModelError("reCAPTCHA", "* The reCAPTCHA is incorrect");
+                    ModelState.AddModelError("reCAPTCHA", "* reCAPTCHA error.");
                     return View(contact);
                 }
             }
 
             if (ModelState.IsValid)
             {
-                var body = "<h4>Hello, {0}!</h4></br><p>Thank you for contacting us,</p></br><p>Your ticket will be reviewed soon.</p>";
+                var body = "<h4>Hej, {0}!</h4></br><p>Det här är ett testmail,</p></br><p>Vi hör av oss om det händer något.</p>";
                 var message = new MailMessage();
                 message.From = new MailAddress("testarn123123@gmail.com");
                 message.To.Add(new MailAddress(contact.Email));
@@ -95,7 +92,7 @@ namespace Driftservice_Registration.Controllers
                 }
                 db.Contacts.Add(contact);
                 await db.SaveChangesAsync();
-                return View("Success");
+                return RedirectToAction("create");
             }
             return View(contact);
         }
