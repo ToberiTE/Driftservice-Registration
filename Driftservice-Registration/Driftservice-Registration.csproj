@@ -176,12 +176,7 @@
     <Content Include="Content\alerts\saving.gif" />
     <Content Include="Content\alerts\success.png" />
     <Content Include="Content\alerts\warning.png" />
-    <Content Include="Content\icons\stadsnät.png" />
-    <Content Include="Content\icons\corecms.png" />
-    <Content Include="Content\icons\lan.png" />
-    <Content Include="Content\icons\mdaemon.png" />
-    <Content Include="Content\icons\exchange.png" />
-    <Content Include="Content\icons\wordpress.png" />
+    <Content Include="Content\icons\check.png" />
     <Content Include="Content\myalert-theme.min.css" />
     <Content Include="Content\myalert.min.css" />
     <Content Include="Content\themes\base\accordion.css" />

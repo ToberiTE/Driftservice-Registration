@@ -21,11 +21,11 @@ namespace Driftservice_Registration.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ContactID,FirstName,LastName,Business,Email,PhoneNumber,SmsChecked,EmailChecked,NotificationType,ContactGuid,Language,RegDate")] Contact contact)
         {
-            if (contact.SmsChecked && !contact.EmailChecked)
+            if (contact.EmailChecked && !contact.SmsChecked)
             {
                 contact.NotificationType = 1;
             }
-            else if (!contact.SmsChecked && contact.EmailChecked)
+            else if (!contact.EmailChecked && contact.SmsChecked)
             {
                 contact.NotificationType = 2;
             }
@@ -74,7 +74,7 @@ namespace Driftservice_Registration.Controllers
 
             if (ModelState.IsValid)
             {
-                var body = "<h4>Hej, {0}!</h4></br><p>Det här är ett testmail,</p></br><p>Vi hör av oss om det händer något.</p>";
+                var body = "<h4>Hej, {0}!</h4></br><p>Det här är ett testmail,</p><p>Vi hör av oss om det händer något.</p>";
                 var message = new MailMessage();
                 message.From = new MailAddress("testarn123123@gmail.com");
                 message.To.Add(new MailAddress(contact.Email));

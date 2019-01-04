@@ -16,9 +16,9 @@
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
     <div class="row">
         <div class="col-lg-6">
+            <h3 style="text-decoration-line:underline">Information</h3><br />
             <div class="form-group">
                 @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -26,7 +26,6 @@
                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -34,7 +33,6 @@
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Business, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -42,7 +40,6 @@
                     @Html.ValidationMessageFor(model => model.Business, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -50,7 +47,6 @@
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -58,7 +54,13 @@
                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <div class="form-group">
+                @Html.LabelFor(model => model.RegDate, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                <div class="input-group col-md-10 col-lg-8" id="datetoggle">
+                    @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="btn btn-default input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.NotificationType, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -69,7 +71,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
                 <div class="col-md-10 col-lg-8">
@@ -79,57 +80,78 @@
                     new SelectListItem() {Text = "Tyska", Value="3"}}, new { @style = "width: 100px; height: 25px; margin-top: 5px;" })
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.RegDate, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                <div class="input-group col-md-10 col-lg-8" id="datetoggle">
-                    @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
-                    <span class="btn btn-default input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                </div>
-            </div>
         </div>
 
-        <div class="col-md-6 col-lg-6">
-            <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-                <div class="row">
-                    <h3>Tjänster</h3>
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+                    <h3 style="text-decoration-line:underline">Tjänster</h3>
+                    <div class="card" style="margin:30px 0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Epost - Exchange
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span class="success"></span>
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Epost - MDaemon
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span class="success"></span>
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Webb - CoreCMS
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span class="success"></span>
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Webb - WordPress
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span class="success"></span>
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Internet
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span class="success"></span>
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                Stadsnät
+                                <label class="checkbox">
+                                    <input type="checkbox" />
+                                    <span class="success"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="row">
-                    <h4 style="text-decoration-line: underline;">Mail</h4>
-                    <img src="~/Content/icons/exchange.png" style="width: 190px; height: 40px; padding-right: 20px;" />
-                    <img src="~/Content/icons/mdaemon.png" style="width: 180px; height: 45px;" />
-                </div>
-                <hr />
-                <div class="row">
-                    <h4 style="text-decoration-line: underline;">Nät</h4>
-                    <img src="~/Content/icons/lan.png" style="width: 80px; height: 60px; padding-right: 20px;" />
-                    <img src="~/Content/icons/stadsnät.png" style="width: 80px; height: 80px;" />
-                </div>
-                <hr />
-                <div class="row">
-                    <h4 style="text-decoration-line: underline;">CMS</h4>
-                    <img src="~/Content/icons/corecms.png" style="width: 180px; height: 35px; padding-right: 20px;" />
-                    <img src="~/Content/icons/wordpress.png" style="width: 100px; height: 60px;" />
-                </div>
-                <hr />
             </div>
         </div>
     </div>
+
+    <br />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10" id="recaptcha">
             @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
             @Html.ValidationMessage("reCAPTCHA", new { @class = "text-danger" })
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
             <p>* fält krävs.</p>
             <input type="submit" value="Registrera" class="btn btn-danger btn-block" />
         </div>
     </div>
-</div>
 
+</div>
 }
 
 @section Scripts {
