@@ -11,7 +11,6 @@ namespace Driftservice_Registration.Controllers
     public class ContactsController : Controller
     {
         private DriftserviceDbModel db = new DriftserviceDbModel();
-
         public ActionResult Create()
         {
             return View();
@@ -34,25 +33,9 @@ namespace Driftservice_Registration.Controllers
                 contact.NotificationType = 3;
             }
 
-            if (!contact.EmailChecked && !contact.SmsChecked)
-            {
-                ModelState.AddModelError("NotificationType", "* Välj minst en kontaktmetod.");
-                return View(contact);
-            }
-            if (contact.EmailChecked && contact.SmsChecked && string.IsNullOrEmpty(contact.Email) && string.IsNullOrEmpty(contact.PhoneNumber))
-            {
-                ModelState.AddModelError("Email", "* Vald kontaktmetod kräver en email.");
-                ModelState.AddModelError("PhoneNumber", "* Vald kontaktmetod kräver ett telefonnummer.");
-                return View(contact);
-            }
             if (contact.SmsChecked && string.IsNullOrEmpty(contact.PhoneNumber))
             {
                 ModelState.AddModelError("PhoneNumber", "* Vald kontaktmetod kräver ett telefonnummer.");
-                return View(contact);
-            }
-            if (contact.EmailChecked && string.IsNullOrEmpty(contact.Email))
-            {
-                ModelState.AddModelError("Email", "* Vald kontaktmetod kräver en email.");
                 return View(contact);
             }
 

@@ -30,20 +30,22 @@ namespace Driftservice_Registration.Models
         public string Business { get; set; }
 
         [EmailAddress]
+        [Required(ErrorMessage = "En giltig email krävs.")]
+        [DisplayName("Email *")]
         public string Email { get; set; }
 
         [Phone]
         [DisplayName("Telefon")]
         public string PhoneNumber { get; set; }
 
+        [DisplayName("Kontaktmetod")]
+        public int NotificationType { get; set; }
+
         [NotMapped]
         public bool SmsChecked { get; set; }
 
         [NotMapped]
         public bool EmailChecked{ get; set; }
-
-        [DisplayName("Kontaktmetod *")]
-        public int NotificationType { get; set; }
 
         public Guid ContactGuid { get; set; }
 
