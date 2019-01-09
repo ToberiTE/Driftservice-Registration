@@ -164,6 +164,7 @@
     <Compile Include="Models\DriftserviceDbModel.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\ServiceType.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +177,10 @@
     <Content Include="Content\alerts\saving.gif" />
     <Content Include="Content\alerts\success.png" />
     <Content Include="Content\alerts\warning.png" />
-    <Content Include="Content\icons\check.png" />
+    <Content Include="Content\images\check.png" />
+    <Content Include="Content\images\error.png" />
+    <Content Include="Content\images\saving.gif" />
+    <Content Include="Content\images\success.png" />
     <Content Include="Content\myalert-theme.min.css" />
     <Content Include="Content\myalert.min.css" />
     <Content Include="Content\themes\base\accordion.css" />

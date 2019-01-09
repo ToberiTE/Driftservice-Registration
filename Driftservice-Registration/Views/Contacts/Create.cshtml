@@ -6,15 +6,15 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Driftservice - Registration</h2>
-
+<div class="well">
+    Driftservice - Registration
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="row">
         <div class="col-lg-6">
@@ -83,7 +83,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-lg-6">
+            <div class="col-lg-6">
                 <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
                     <h3 style="text-decoration-line:underline">Tjänster</h3>
                     <div class="card" style="margin:30px 0">
@@ -91,42 +91,42 @@
                             <li class="list-group-item">
                                 Epost - Exchange
                                 <label class="checkbox">
-                                    <input type="checkbox" name="serviceCheck" class="check" value="1" />
+                                    <input type="checkbox" name="serviceCheck" class="check" id="1" value="1" />
                                     <span class="success"></span>
                                 </label>
                             </li>
                             <li class="list-group-item">
                                 Epost - MDaemon
                                 <label class="checkbox">
-                                    <input type="checkbox" name="serviceCheck" class="check" value="2" />
+                                    <input type="checkbox" name="serviceCheck" class="check" id="2" value="2" />
                                     <span class="success"></span>
                                 </label>
                             </li>
                             <li class="list-group-item">
                                 Webb - CoreCMS
                                 <label class="checkbox">
-                                    <input type="checkbox" name="serviceCheck" class="check" value="3" />
+                                    <input type="checkbox" name="serviceCheck" class="check" id="3" value="3" />
                                     <span class="success"></span>
                                 </label>
                             </li>
                             <li class="list-group-item">
                                 Webb - WordPress
                                 <label class="checkbox">
-                                    <input type="checkbox" name="serviceCheck" class="check" value="4" />
+                                    <input type="checkbox" name="serviceCheck" class="check" id="4" value="4" />
                                     <span class="success"></span>
                                 </label>
                             </li>
                             <li class="list-group-item">
                                 Internet
                                 <label class="checkbox">
-                                    <input type="checkbox" name="serviceCheck" class="check" value="5" />
+                                    <input type="checkbox" name="serviceCheck" class="check" id="5" value="5" />
                                     <span class="success"></span>
                                 </label>
                             </li>
                             <li class="list-group-item">
                                 Stadsnät
                                 <label class="checkbox">
-                                    <input type="checkbox" name="serviceCheck" class="check" value="6" />
+                                    <input type="checkbox" name="serviceCheck" class="check" id="6" value="6" />
                                     <span class="success"></span>
                                 </label>
                             </li>
@@ -136,7 +136,7 @@
             </div>
         </div>
     </div>
-    
+
     <br />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10" id="recaptcha">

@@ -11,6 +11,7 @@ namespace Driftservice_Registration.Controllers
     public class ContactsController : Controller
     {
         private DriftserviceDbModel db = new DriftserviceDbModel();
+
         public ActionResult Create()
         {
             return View();
