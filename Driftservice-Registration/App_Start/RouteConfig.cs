@@ -16,7 +16,7 @@ namespace Driftservice_Registration
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Contacts", action = "Create", id = UrlParameter.Optional }
+                defaults: new { controller = "Contacts", action = "Registration", id = UrlParameter.Optional }
             );
         }
     }

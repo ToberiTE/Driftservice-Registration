@@ -156,15 +156,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminVM.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\DriftserviceDbModel.cs" />
     <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\MailService.cs" />
     <Compile Include="Models\ServiceType.cs" />
-    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Models\ServiceTypeVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,10 +180,14 @@
     <Content Include="Content\alerts\saving.gif" />
     <Content Include="Content\alerts\success.png" />
     <Content Include="Content\alerts\warning.png" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\bg1.jpeg" />
     <Content Include="Content\images\check.png" />
     <Content Include="Content\images\error.png" />
     <Content Include="Content\images\saving.gif" />
     <Content Include="Content\images\success.png" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\myalert-theme.min.css" />
     <Content Include="Content\myalert.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -225,6 +232,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -236,6 +244,11 @@
     </Content>
     <Content Include="Scripts\checkboxes.js" />
     <Content Include="Scripts\datepicker.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -251,6 +264,8 @@
     <Content Include="Scripts\myalert.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\search.js" />
+    <Content Include="Scripts\tabtoggle.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -264,7 +279,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Registration.cshtml" />
+    <Content Include="Views\Admin\Administration.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

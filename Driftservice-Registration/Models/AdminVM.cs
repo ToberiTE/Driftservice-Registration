@@ -1,36 +1,29 @@
+ï»¿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Driftservice_Registration.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    public partial class Contact
+    public class AdminVM
     {
-        public Contact()
+        public AdminVM()
         {
-            ContactGuid = Guid.NewGuid();
-            ServiceTypes = new HashSet<ServiceType>();
         }
-        
+
         public int ContactID { get; set; }
 
-        [Required(ErrorMessage = "* Förnamn krävs.")]
-        [DisplayName("Förnamn *")]
+        [DisplayName("FÃ¶rnamn")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "* Efternamn krävs.")]
-        [DisplayName("Efternamn *")]
+        [DisplayName("Efternamn")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "* Företag krävs.")]
-        [DisplayName("Företag *")]
+        [DisplayName("FÃ¶retag")]
         public string Business { get; set; }
 
         [EmailAddress]
-        [Required(ErrorMessage = "En giltig email krävs.")]
-        [DisplayName("Email *")]
+        [DisplayName("Email")]
         public string Email { get; set; }
 
         [Phone]
@@ -48,13 +41,17 @@ namespace Driftservice_Registration.Models
 
         public Guid ContactGuid { get; set; }
 
-        [DisplayName("Språk")]
+        [DisplayName("SprÃ¥k")]
         public int? Language { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [DisplayName("Datum")]
         public DateTime? RegDate { get; set; }
 
-        public virtual ICollection<ServiceType> ServiceTypes { get; set; }
+        public int ServiceTypeID { get; set; }
+
+        public string Description { get; set; }
+
+        public bool? PublicServiceType { get; set; }
     }
 }

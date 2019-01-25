@@ -4,20 +4,58 @@
     background-color: #f0f0f0;
 }
 
+#wellheader {
+    background-color: #f0f0f0;
+    margin-bottom: 0;
+    width: 100px;
+    border: 2px solid #f0f0f0;
+    border-radius: 2px;
+    border-bottom: 0;
+    padding: 8px;
+}
+
+.well-lg {
+    overflow: auto;
+    text-align: left;
+    font-size: 13px;
+    background-color: #f0f0f0;
+    padding: 0;
+    height: auto;
+}
+
+tr {
+    background: white;
+}
+
+tr:nth-of-type(odd) {
+    background: #e1e1e1;
+}
+
+th {
+    background: #444;
+    color: white;
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(images/bg1.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    user-select: none;
 }
 
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
-
-* {
-    -webkit-user-select: none;
-    -moz-user-select: -moz-none;
-    user-select: none;
 }
 
 .dl-horizontal dt {
@@ -148,4 +186,62 @@ textarea.form-block {
     max-width: 280px;
     padding: .6em 1em;
     height: 3.2em;
+}
+
+#searchIcon {
+    position: absolute;
+    transform: translate(-22px, 7px);
+}
+
+#searchContact {
+    border-bottom-right-radius: .4rem;
+    border-top-right-radius: .4rem;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+    }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+.tabcontent {
+    display: none;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -webkit-animation: fadein 1s;
+    -o-animation: fadein 1s;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

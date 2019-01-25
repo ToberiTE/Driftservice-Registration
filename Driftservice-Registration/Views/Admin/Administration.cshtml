@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Driftservice_Registration.Models.Contact>
+
+@{
+    ViewBag.Title = "Administration";
+}
+
+<div class="well">
+    Driftservice - Administration
+</div>
+
+<div class="input-group" id="searchBox" style="margin-left:220px; transform:translateY(42px);">
+    @Html.TextBox("searchContact", "", new { @style = "width:200px;", @class = "form-control", placeholder = "Sök kontakt.." })
+    <span id="searchIcon" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+</div>
+
+<div class="tab">
+    <button class="tablinks" onclick="toggleTab(event, 'Kontakter'), addonsKontakter()" id="defaultTab">Kontakter</button>
+    <button class="tablinks" onclick="toggleTab(event, 'Tjänster'), addonsTjänster()">Tjänster</button>
+</div>
+
+<div id="Kontakter" class="tabcontent">
+    <div class="well well-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        Förnamn
+                    </th>
+                    <th>
+                        Efternamn
+                    </th>
+                    <th>
+                        Företag
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Telefon
+                    </th>
+                    <th>
+                        Kontaktmetod
+                    </th>
+                    <th>
+                        KontaktGuid
+                    </th>
+                    <th>
+                        Språk
+                    </th>
+                    <th>
+                        Datum
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Business)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NotificationType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactGuid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Language)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Ändra", "Edit", new { id = item.ContactID })
+                            @Html.ActionLink("Ta bort", "Delete", new { id = item.ContactID })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="Tjänster" class="tabcontent">
+    <h3>"Tjänster", Coming soon...</h3>
+</div>

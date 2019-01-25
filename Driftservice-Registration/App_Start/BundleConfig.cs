@@ -5,12 +5,16 @@ namespace Driftservice_Registration
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-
             bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
                 "~/Scripts/datepicker.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/search").Include(
+                "~/Scripts/search.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tabtoggle").Include(
+                "~/Scripts/tabtoggle.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/checkboxes").Include(
                 "~/Scripts/checkboxes.js"));
@@ -24,8 +28,6 @@ namespace Driftservice_Registration
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                 "~/Scripts/jquery-ui-{version}.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
@@ -35,7 +37,8 @@ namespace Driftservice_Registration
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/font-awesome.css"));
         }
     }
 }

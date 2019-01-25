@@ -1,8 +1,7 @@
 ﻿using Driftservice_Registration.Models;
 using Recaptcha.Web;
 using Recaptcha.Web.Mvc;
-using System.Net;
-using System.Net.Mail;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -11,15 +10,27 @@ namespace Driftservice_Registration.Controllers
     public class ContactsController : Controller
     {
         private DriftserviceDbModel db = new DriftserviceDbModel();
+        private readonly MailService mailService = new MailService();
 
-        public ActionResult Create()
+        public ServiceType MapModelToServiceType(ServiceTypeVM svm)
         {
+            return new ServiceType()
+            {
+                ServiceTypeID = svm.ServiceTypeID,
+                Description = svm.Description,
+                PublicServiceType = svm.PublicServiceType
+            };
+        }
+
+        public ActionResult Registration()
+        {
+            ViewBag.item = db.ServiceTypes.Where(s => s.PublicServiceType == true).Select(s => new ServiceTypeVM { ServiceTypeID = s.ServiceTypeID, Description = s.Description, PublicServiceType = s.PublicServiceType }).ToList();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ContactID,FirstName,LastName,Business,Email,PhoneNumber,SmsChecked,EmailChecked,NotificationType,ContactGuid,Language,RegDate")] Contact contact)
+        public async Task<ActionResult> Registration([Bind(Include = "ContactID,FirstName,LastName,Business,Email,PhoneNumber,SmsChecked,EmailChecked,NotificationType,ContactGuid,Language,RegDate,ServiceTypeID,Description,PublicServiceType")] Contact contact, ServiceTypeVM svm)
         {
             if (contact.EmailChecked && !contact.SmsChecked)
             {
@@ -56,31 +67,17 @@ namespace Driftservice_Registration.Controllers
                 }
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) /* TODO: "success message box" + "creating" (before) */
             {
-                var body = "<h4>Hej, {0}!</h4></br><p>Det här är ett testmail,</p><p>Vi hör av oss om det händer något.</p>";
-                var message = new MailMessage();
-                message.From = new MailAddress("testarn123123@gmail.com");
-                message.To.Add(new MailAddress(contact.Email));
-                message.Subject = "Driftservice";
-                message.SubjectEncoding = System.Text.Encoding.UTF8;
-                message.Body = string.Format(body, contact.FirstName);
-                message.BodyEncoding = System.Text.Encoding.UTF8;
-                message.IsBodyHtml = true;
-                using (var smtp = new SmtpClient("smtp.gmail.com", 587))
-                {
-                    smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("testarn123123@gmail.com", "test#123");
-                    await smtp.SendMailAsync(message);
-                }
+                MapModelToServiceType(svm);
                 db.Contacts.Add(contact);
                 await db.SaveChangesAsync();
-                return RedirectToAction("create");
+                var mailsent = await mailService.SendMail(contact);
+                return RedirectToAction("Registration");
             }
-            return View(contact);
+            return View(contact); /* TODO: "error message box" */
         }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
