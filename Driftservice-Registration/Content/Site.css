@@ -245,3 +245,21 @@ textarea.form-block {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+th, td {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+    td .form-control {
+        margin-left: auto;
+        margin-right: auto;
+        width: 250px;
+        height: 30px;
+    }
+
+    td a {
+        margin-left: 20px;
+        margin-right: 20px;
+    }

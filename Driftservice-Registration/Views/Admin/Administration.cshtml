@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Driftservice_Registration.Models.Contact>
+﻿@model IEnumerable<Driftservice_Registration.Models.AdminVM>
 
 @{
     ViewBag.Title = "Administration";
@@ -50,44 +50,50 @@
                     <th>
                         Datum
                     </th>
-                    <th></th>
+                    <th>
+
+                    </th>
                 </tr>
 
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Business)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NotificationType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ContactGuid)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Language)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RegDate)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Ändra", "Edit", new { id = item.ContactID })
-                            @Html.ActionLink("Ta bort", "Delete", new { id = item.ContactID })
-                        </td>
-                    </tr>
+                    foreach (var contact in item.contact)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => contact.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.Business)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.NotificationType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.ContactGuid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.Language)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => contact.RegDate)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Delete", "Admin", new { id = contact.ContactID })" title="Ta bort">
+                                    <i class="fa fa-trash-o fa-lg" aria-hidden="true" style="font-size: 25px; color: red;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 }
             </table>
         </div>
@@ -95,5 +101,47 @@
 </div>
 
 <div id="Tjänster" class="tabcontent">
-    <h3>"Tjänster", Coming soon...</h3>
+    <div class="well well-lg">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        ServiceTypeID
+                    </th>
+                    <th>
+                        Beskrivning
+                    </th>
+                    <th>
+                        Visa på sidan
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    foreach (var serviceType in item.serviceType)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => serviceType.ServiceTypeID)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => serviceType.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => serviceType.PublicServiceType)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Delete", "Admin", new { id = serviceType.ServiceTypeID })" title="Ta bort" >
+                                    <i class="fa fa-trash-o fa-lg" aria-hidden="true" style="font-size: 25px; color: red;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
 </div>

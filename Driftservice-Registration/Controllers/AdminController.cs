@@ -1,5 +1,7 @@
 ﻿using Driftservice_Registration.Models;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -17,10 +19,13 @@ namespace Driftservice_Registration.Controllers
 
         public async Task<ActionResult> Administration()
         {
-            return View(await db.Contacts.ToListAsync());
+            var vm = new AdminVM();
+            vm.contact = await db.Contacts.ToListAsync();
+            vm.serviceType = await db.ServiceTypes.ToListAsync();
+            var vmList = new List<AdminVM>();
+            vmList.Add(vm);
+            return View(vmList);
         }
-
-
 
         public async Task<ActionResult> Edit(int? id)
         {
