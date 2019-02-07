@@ -8,14 +8,19 @@
     Driftservice - Administration
 </div>
 
-<div class="input-group" id="searchBox" style="margin-left:220px; transform:translateY(42px);">
-    @Html.TextBox("searchContact", "", new { @style = "width:200px;", @class = "form-control", placeholder = "Sök kontakt.." })
+<div class="input-group" id="searchBox">
+    @Html.TextBox("searchContact", "", new { @class = "form-control", placeholder = "Sök kontakt.." })
     <span id="searchIcon" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 </div>
 
 <div class="tab">
-    <button class="tablinks" onclick="toggleTab(event, 'Kontakter'), addonsKontakter()" id="defaultTab">Kontakter</button>
-    <button class="tablinks" onclick="toggleTab(event, 'Tjänster'), addonsTjänster()">Tjänster</button>
+    <button class="tablinks" onclick="toggleTab(event, 'Kontakter')" id="defaultTab">Kontakter</button>
+    <button class="tablinks" onclick="toggleTab(event, 'Tjänster'), tabTools(), GetServiceTypes()">Tjänster</button>
+    <div class="tabTools">
+        <button class="tablinks" title="Skapa ny" id="createBtn">
+            <i class="fas fa-plus" aria-hidden="true" style="font-size: 30px; color: #86d167; transform: translateY(-3px);"></i>
+        </button>
+    </div>
 </div>
 
 <div id="Kontakter" class="tabcontent">
@@ -23,6 +28,9 @@
         <div class="table-responsive">
             <table class="table">
                 <tr>
+                    <th>
+                        ID
+                    </th>
                     <th>
                         Förnamn
                     </th>
@@ -50,51 +58,9 @@
                     <th>
                         Datum
                     </th>
-                    <th>
-
-                    </th>
+                    <th></th>
                 </tr>
-
-                @foreach (var item in Model)
-                {
-                    foreach (var contact in item.contact)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(model => contact.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.Business)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.PhoneNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.NotificationType)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.ContactGuid)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.Language)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => contact.RegDate)
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Delete", "Admin", new { id = contact.ContactID })" title="Ta bort">
-                                    <i class="fa fa-trash-o fa-lg" aria-hidden="true" style="font-size: 25px; color: red;"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                }
+                <tbody class="cTable"></tbody>
             </table>
         </div>
     </div>
@@ -114,34 +80,68 @@
                     <th>
                         Visa på sidan
                     </th>
-                    <th>
-
-                    </th>
+                    <th></th>
                 </tr>
-
-                @foreach (var item in Model)
-                {
-                    foreach (var serviceType in item.serviceType)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(model => serviceType.ServiceTypeID)
-                            </td>
-                            <td>
-                                @Html.EditorFor(model => serviceType.Description, new { htmlAttributes = new { @class = "form-control" } })
-                            </td>
-                            <td>
-                                @Html.EditorFor(model => serviceType.PublicServiceType)
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Delete", "Admin", new { id = serviceType.ServiceTypeID })" title="Ta bort" >
-                                    <i class="fa fa-trash-o fa-lg" aria-hidden="true" style="font-size: 25px; color: red;"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                }
+                <tbody class="sTable"></tbody>
             </table>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="editModal" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Redigera Kontakt</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="FirstName">Förnamn</label>
+                        <input type="text" class="form-control" id="" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" class="form-control" id="" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" class="form-control" id="" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" class="form-control" id="" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" class="form-control" id="" placeholder="" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="" data-path="">Spara</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="modalText">Ändra Kontakt</h4>
+</div>
+<div class="modal-body">
+
+</div>
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal">Avbryt</button>
+    <input class="btn btn-primary" type="submit" value="Spara" />
+</div>
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/ajaxcrud.js")"></script>
+    <script src="@Url.Content("~/Scripts/tabtoggle.js")"></script>
+    <script src="@Url.Content("~/Scripts/search.js")"></script>
+}

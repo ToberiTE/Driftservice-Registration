@@ -1,3 +1,10 @@
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\VBCSCompiler.exe
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\ApplicationInsights.config
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\Driftservice-Registration.dll.config
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\Driftservice-Registration.dll
@@ -9,18 +16,13 @@ C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registratio
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\csi.exe.config
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\csi.rsp
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\Microsoft.Win32.Primitives.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.AppContext.dll
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Console.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Diagnostics.Process.dll
@@ -30,7 +32,6 @@ C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registratio
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.IO.Pipes.dll
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Security.AccessControl.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Security.Claims.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\System.Security.Cryptography.Algorithms.dll
@@ -48,7 +49,6 @@ C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registratio
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\vbc.exe
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\vbc.exe.config
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\vbc.rsp
-C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\VBCSCompiler.exe
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\Antlr3.Runtime.dll
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\EntityFramework.dll
@@ -76,6 +76,7 @@ C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registratio
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\EntityFramework.xml
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\EntityFramework.SqlServer.xml
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\Newtonsoft.Json.pdb
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\Newtonsoft.Json.xml
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\System.ValueTuple.xml
 C:\Users\Adminpc\source\repos\Driftservice-Registration\Driftservice-Registration\bin\System.Web.Helpers.xml

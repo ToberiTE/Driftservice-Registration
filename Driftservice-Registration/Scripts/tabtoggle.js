@@ -1,5 +1,6 @@
-﻿
-function toggleTab(evt, tabName) {
+﻿function toggleTab(evt, tabName) {
+    document.getElementById("searchBox").style.display = "block";
+    document.getElementById("createBtn").style.display = "none";
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -14,10 +15,7 @@ function toggleTab(evt, tabName) {
 }
 document.getElementById("defaultTab").click();
 
-function addonsTjänster() {
-    document.getElementById("searchBox").style.visibility = "hidden";
-}
-
-function addonsKontakter() {
-    document.getElementById("searchBox").style.visibility = "visible";
+function tabTools() {
+    document.getElementById("searchBox").style.display = "none";
+    document.getElementById("createBtn").style.display = "block";
 }

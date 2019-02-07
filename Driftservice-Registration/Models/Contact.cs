@@ -56,5 +56,6 @@ namespace Driftservice_Registration.Models
         public DateTime? RegDate { get; set; }
 
         public virtual ICollection<ServiceType> ServiceTypes { get; set; }
+
     }
 }
