@@ -2,13 +2,15 @@
     text-align: left;
     font-size: 25px;
     background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
 }
 
 #wellheader {
     background-color: #f0f0f0;
     margin-bottom: 0;
     width: 100px;
-    border: 2px solid #f0f0f0;
+    border: 1px solid #ccc;
     border-radius: 2px;
     border-bottom: 0;
     padding: 8px;
@@ -19,6 +21,8 @@
     text-align: left;
     font-size: 13px;
     background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
     padding: 0;
     height: auto;
 }
@@ -174,7 +178,7 @@ tr {
 }
 
     tr:nth-of-type(odd) {
-        background: #e5e5e5;
+        background: #e1e1e1;
     }
 
 th {
@@ -188,13 +192,17 @@ th, td {
 }
 
 tr:hover {
-    background-color: #c1c1c1;
+    background-color: #c7c7c7;
 }
 
+tbody tr {
+    height: 20px;
+}
 
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
+    border-radius: 2px;
     background-color: #f1f1f1;
 }
 
@@ -266,7 +274,7 @@ tr:hover {
 
 #searchBox {
     position: absolute;
-    margin-top: 8px;
+    margin-top: 9px;
     margin-left: 220px;
 }
 
@@ -305,13 +313,15 @@ tr:hover {
         background-color: #ddd;
     }
 
-#editContactBtn {
-    margin-right: 10px;
-    padding-left: 4px;
+#editIcon {
+    font-size: 23px; 
+    color: cornflowerblue; 
+    margin-right: 5px;
 }
 
-#deleteContactBtn {
-    padding-right: 4px;
+#delIcon {
+    font-size: 23px;
+    color: red;
 }
 
 a:link {

@@ -9,7 +9,7 @@ namespace Driftservice_Registration.Models
 {
     public class AdminVM
     {
-        public List<Contact> contact { get; set; }
-        public List<ServiceType> serviceType { get; set; }
+        public virtual ICollection<Contact> contact { get; set; }
+        public virtual ICollection<ServiceType> serviceType { get; set; }
     }
 }

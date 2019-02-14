@@ -24,7 +24,7 @@ namespace Driftservice_Registration
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/site.css",
                       "~/Content/solid.min.css",
                       "~/Content/fontawesome.min.css"));
