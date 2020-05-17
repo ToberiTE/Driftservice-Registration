@@ -10,91 +10,134 @@
 
 <div class="input-group" id="searchBox">
     @Html.TextBox("searchContact", "", new { @class = "form-control", placeholder = "Sök kontakt.." })
-    <span id="searchIcon" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    @Html.DropDownList("FilterByService", (ViewBag.FilterByService as SelectList), "Filtrera på tjänst..",
+    new { @class = "form-control", id = "SortContacts", onchange = "serviceDropDownChange(this.value)" })
 </div>
 
 <div class="tab">
     <button class="tablinks" onclick="toggleTab(event, 'Kontakter')" id="defaultTab">Kontakter</button>
-    <button class="tablinks" onclick="toggleTab(event, 'Tjänster'), tabTools(), GetServiceTypes()">Tjänster</button>
+    <button class="tablinks" onclick="toggleTab(event, 'Tjänster'), tabOptions()">Tjänster</button>
     <div class="tabTools">
-        <button class="tablinks" title="Skapa ny" id="createBtn">
-            <i class="fas fa-plus" aria-hidden="true" style="font-size: 30px; color: #86d167; transform: translateY(-3px);"></i>
+        <button class="tablinks" title="Uppdatera" id="reloadContacts" onclick="GetContacts()">
+            <i class="fas fa-redo-alt" aria-hidden="true" id="reloadIcon"></i>
+        </button>
+        <button class="tablinks" title="Skapa ny" id="createContact" onclick="CreateContactModal()">
+            <i class="fas fa-plus" aria-hidden="true" id="createIcon"></i>
+        </button>
+        <button class="tablinks" title="Uppdatera" id="reloadServices" onclick="GetServiceTypes()">
+            <i class="fas fa-redo-alt" aria-hidden="true" id="reloadIcon"></i>
+        </button>
+        <button class="tablinks" title="Skapa ny" id="createService" onclick="CreateServiceModal()">
+            <i class="fas fa-plus" aria-hidden="true" id="createIcon"></i>
         </button>
     </div>
 </div>
 
 <div id="Kontakter" class="tabcontent">
-    <div class="well well-lg">
-        <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Förnamn
-                    </th>
-                    <th>
-                        Efternamn
-                    </th>
-                    <th>
-                        Företag
-                    </th>
-                    <th>
-                        Email
-                    </th>
-                    <th>
-                        Telefon
-                    </th>
-                    <th>
-                        Kontaktmetod
-                    </th>
-                    <th>
-                        KontaktGuid
-                    </th>
-                    <th>
-                        Språk
-                    </th>
-                    <th>
-                        Datum
-                    </th>
-                    <th></th>
-                </tr>
-                <tbody class="cTable"></tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>
+                    Förnamn
+                </th>
+                <th>
+                    Efternamn
+                </th>
+                <th>
+                    Företag
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Telefon
+                </th>
+                <th>
+                    Kontaktmetod
+                </th>
+                <th>
+                    Språk
+                </th>
+                <th>
+                    Datum
+                </th>
+                <th>
+                    Tjänster
+                </th>
+                <th></th>
+            </tr>
+            <tbody class="cTable"></tbody>
+        </table>
     </div>
 </div>
 
 <div id="Tjänster" class="tabcontent">
-    <div class="well well-lg">
-        <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <th>
-                        ServiceTypeID
-                    </th>
-                    <th>
-                        Beskrivning
-                    </th>
-                    <th>
-                        Visa på sidan
-                    </th>
-                    <th></th>
-                </tr>
-                <tbody class="sTable"></tbody>
-            </table>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>
+                    Beskrivning
+                </th>
+                <th>
+                    Visa på sida
+                </th>
+                <th></th>
+            </tr>
+            <tbody class="sTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="createContactModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="createContactModalContent">
+            </div>
         </div>
     </div>
 </div>
 
-<div id='editContactModal' class='modal fade in'>
+<div id="editContactModal" class="modal fade in">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div id='modalContent'>
-
+            <div id="editContactModalContent">
             </div>
         </div>
+    </div>
+</div>
+
+<div id="createServiceModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="createServiceModalContent">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="editServiceModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="editServiceModalContent">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spinner-overlay" style="display: none;">
+    <div class="spinner">
+        <div class="spinner-circle1 spinner-circle"></div>
+        <div class="spinner-circle2 spinner-circle"></div>
+        <div class="spinner-circle3 spinner-circle"></div>
+        <div class="spinner-circle4 spinner-circle"></div>
+        <div class="spinner-circle5 spinner-circle"></div>
+        <div class="spinner-circle6 spinner-circle"></div>
+        <div class="spinner-circle7 spinner-circle"></div>
+        <div class="spinner-circle8 spinner-circle"></div>
+        <div class="spinner-circle9 spinner-circle"></div>
+        <div class="spinner-circle10 spinner-circle"></div>
+        <div class="spinner-circle11 spinner-circle"></div>
+        <div class="spinner-circle12 spinner-circle"></div>
     </div>
 </div>
 
@@ -102,6 +145,12 @@
 {
     <script src="@Url.Content("~/Scripts/adminajax.js")"></script>
     <script src="@Url.Content("~/Scripts/tabtoggle.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootbox.min.js")"></script>
     <script src="@Url.Content("~/Scripts/search.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootbox.js")"></script>
+
+    <script>
+        function serviceDropDownChange(val) {
+            GetContacts(val);
+        }
+    </script>
 }

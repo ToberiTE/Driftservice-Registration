@@ -4,125 +4,148 @@
 
 @{
     ViewBag.Title = "Registration";
-    var serviceList = ViewBag.item;
 }
 
 <div class="well">
-    Driftservice - Registration
+    <div style="font-weight:600;">
+        Driftservice - Registrering
+    </div>
 </div>
+
+@{
+    var serviceList = ViewBag.item;
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="col-lg-6">
-                <h3 style="text-decoration-line:underline">Information</h3><br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Business, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.EditorFor(model => model.Business, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Business, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.RegDate, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.EditorFor(model => model.RegDate, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NotificationType, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        <div class="form-block" style="margin-top: 5px;">
-                            <input type="checkbox" name="EmailChecked" value="true" /><label style="margin-left: 5px; margin-right: 10px">Email</label>
-                            <input type="checkbox" name="SmsChecked" value="true" /><label style="margin-left: 5px">Sms</label><br />
-                            @Html.ValidationMessageFor(model => model.NotificationType, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
-                    <div class="col-md-10 col-lg-8">
-                        @Html.DropDownListFor(m => m.Language, new SelectListItem[]{
-                        new SelectListItem() {Text = "Svenska", Value="1"},
-                        new SelectListItem() {Text = "Engelska", Value="2"},
-                        new SelectListItem() {Text = "Tyska", Value="3"}}, new { @style = "width: 120px; height: 30px; margin-top: 5px; padding: 5px;", @class="form-control" })
-                    </div>
-                </div>
-            </div>
-
+    <div class="well-lg">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-                        <h3 style="text-decoration-line:underline">Tjänster</h3>
-                        <div class="card" style="margin:30px 0">
-                            <ul class="list-group list-group-flush">
-                                @foreach (var item in serviceList)
-                                {
-                                    <li class="list-group-item">
-                                        @item.Description
-                                        <label class="checkbox">
-                                            <input type="checkbox" class="check" id="@item.ServiceTypeID" value="true" />
-                                            <span class="success"></span>
-                                        </label>
-                                    </li>
-                                }
-                            </ul>
+                    <h4 style="color:green; font-weight:700;">Prenumerera på driftinformation</h4>
+                    <p style="font-weight:600;">
+                        Fyll i dina uppgifter samt välj de tjänster du vill prenumerera på.
+                        Du blir då meddelad när vi publicerar ny driftinformation för respektive tjänst.
+                        Känner du dig osäker vilka tjänster du ska välja?
+                        Markera det du tror är rätt, vår Servicedesk justerar om det behövs.
+                    </p>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control required" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control required" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Business, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            @Html.EditorFor(m => m.Business, new { htmlAttributes = new { @class = "form-control required" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control required" } })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            @Html.EditorFor(m => m.PhoneNumber, new { htmlAttributes = new { @class = "form-control required" } })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.NotificationType, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            <div class="form-block" id="regCheckGroup" style="margin-top: 5px;">
+                                <input type="checkbox" name="EmailChecked" value="true" /><label style="margin-left: 10px; margin-right: 10px">Email</label>
+                                <input type="checkbox" name="SmsChecked" value="true" /><label style="margin-left: 10px">Sms</label><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Language, htmlAttributes: new { @class = "control-label col-md-2 col-lg-4" })
+                        <div class="col-md-10 col-lg-8">
+                            @Html.DropDownListFor(m => m.Language, new SelectListItem[]{
+                            new SelectListItem() {Text = "Svenska", Value="1"},
+                            new SelectListItem() {Text = "Engelska", Value="2"},
+                            new SelectListItem() {Text = "Tyska", Value="3"}}, new { @style = "width: 120px; height: 30px; margin-top: 5px; padding: 5px;", @class="form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+                            <h3 style="text-decoration-line:underline;">Tjänster</h3>
+                            <div class="card" style="margin:30px 0; max-width: 280px;">
+                                <ul class="list-group list-group-flush">
+                                    @foreach (var item in serviceList)
+                                    {
+                                        <li class="list-group-item">
+                                            @item.Description
+                                            <label class="checkbox">
+                                                <input type="checkbox" class="check" id="@item.ServiceTypeID" value="true" />
+                                                <span class="success"></span>
+                                            </label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <hr />
+                            <br />
+                            <br />
+                            <div id="recaptcha">
+                                @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.White)
+                                @Html.ValidationMessage("reCAPTCHA", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <div>
+                                <p style="font-weight:700; color:black; font-size:15px;">* fält krävs.</p>
+                                <input type="button" id="Register" value="Registrera" class="btn btn-danger btn-block" onclick="RegisterContact()" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10" id="recaptcha">
-                @Html.Recaptcha(theme: Recaptcha.Web.RecaptchaTheme.Clean)
-                @Html.ValidationMessage("reCAPTCHA", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-                <p>* fält krävs.</p>
-                <input type="submit" value="Registrera" class="btn btn-danger btn-block" />
-            </div>
-        </div>
-
     </div>
 }
+<div class="spinner-overlay" style="display: none;">
+    <div class="spinner">
+        <div class="spinner-circle1 spinner-circle"></div>
+        <div class="spinner-circle2 spinner-circle"></div>
+        <div class="spinner-circle3 spinner-circle"></div>
+        <div class="spinner-circle4 spinner-circle"></div>
+        <div class="spinner-circle5 spinner-circle"></div>
+        <div class="spinner-circle6 spinner-circle"></div>
+        <div class="spinner-circle7 spinner-circle"></div>
+        <div class="spinner-circle8 spinner-circle"></div>
+        <div class="spinner-circle9 spinner-circle"></div>
+        <div class="spinner-circle10 spinner-circle"></div>
+        <div class="spinner-circle11 spinner-circle"></div>
+        <div class="spinner-circle12 spinner-circle"></div>
+    </div>
+</div>
+
+<style>
+    .error-border {
+        border: 1.5px solid red;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255,0,0,.6);
+    }
+</style>
 
 @section Scripts {
-
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/registration.js" )"></script>
+    <script src="~/Scripts/checkboxes.js" )"></script>
 }

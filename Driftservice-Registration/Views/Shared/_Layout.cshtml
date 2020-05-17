@@ -1,19 +1,20 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="background">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/toastr.min.css")
 </head>
-<body>
+<body class="background">
     <div class="container body-content">
         @RenderBody()
     </div>
-    @Scripts.Render("~/bundles/checkboxes")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/toastr.min.js")
+    @Scripts.Render("~/bundles/modernizr")
     @RenderSection("scripts", required: false)
 </body>
 </html>

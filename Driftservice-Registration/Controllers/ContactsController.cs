@@ -1,8 +1,11 @@
 ﻿using Driftservice_Registration.Models;
-using Recaptcha.Web;
-using Recaptcha.Web.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace Driftservice_Registration.Controllers
@@ -10,28 +13,22 @@ namespace Driftservice_Registration.Controllers
     public class ContactsController : Controller
     {
         private DriftserviceDbModel db = new DriftserviceDbModel();
-        private readonly MailService mailService = new MailService();
 
-        public ServiceType MapModelToServiceType(ServiceTypeVM svm)
+        public async Task<ActionResult> Registration()
         {
-            return new ServiceType()
-            {
-                ServiceTypeID = svm.ServiceTypeID,
-                Description = svm.Description,
-                PublicServiceType = svm.PublicServiceType
-            };
-        }
-
-        public ActionResult Registration()
-        {
-            ViewBag.item = db.ServiceTypes.Where(s => s.PublicServiceType == true).Select(s => new ServiceTypeVM { ServiceTypeID = s.ServiceTypeID, Description = s.Description, PublicServiceType = s.PublicServiceType }).ToList();
+            ViewBag.item = await db.ServiceTypes
+                .Where(s => s.PublicServiceType == true)
+                .ToListAsync();
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Registration([Bind(Include = "ContactID,FirstName,LastName,Business,Email,PhoneNumber,SmsChecked,EmailChecked,NotificationType,ContactGuid,Language,RegDate,ServiceTypeID,Description,PublicServiceType")] Contact contact, ServiceTypeVM svm)
+        public async Task<JsonResult> Create(Contact contact, string captcha)
         {
+            ViewBag.item = await db.ServiceTypes
+                .Where(s => s.PublicServiceType == true)
+                .ToListAsync();
+
             if (contact.EmailChecked && !contact.SmsChecked)
             {
                 contact.NotificationType = 1;
@@ -45,39 +42,47 @@ namespace Driftservice_Registration.Controllers
                 contact.NotificationType = 3;
             }
 
-            if (contact.SmsChecked && string.IsNullOrEmpty(contact.PhoneNumber))
-            {
-                ModelState.AddModelError("PhoneNumber", "* Vald kontaktmetod kräver ett telefonnummer.");
-                return View(contact);
-            }
-
-            RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
-            if (string.IsNullOrEmpty(recaptchaHelper.Response))
+            if (string.IsNullOrEmpty(captcha))
             {
                 ModelState.AddModelError("reCAPTCHA", "* reCAPTCHA error.");
-                return View(contact);
+                return Json(contact, JsonRequestBehavior.AllowGet);
             }
-            else
+            using (var wc = new WebClient())
             {
-                RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
-                if (recaptchaResult != RecaptchaVerificationResult.Success)
+                var secret = WebConfigurationManager.AppSettings["recaptchaPrivateKey"];
+                var response = string.Format(
+                    "https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}",
+                   secret,
+                   captcha);
+                var result = wc.DownloadString(response);
+                if (result.ToLower().Contains("false"))
                 {
                     ModelState.AddModelError("reCAPTCHA", "* reCAPTCHA error.");
-                    return View(contact);
+                    return Json(contact, JsonRequestBehavior.AllowGet);
                 }
             }
 
-            if (ModelState.IsValid) /* TODO: "success message box" + "creating" (before) */
+            var serviceList = new List<ServiceType>();
+            foreach (var stype in contact.ServiceTypes)
             {
-                MapModelToServiceType(svm);
+                var foundService = await db.ServiceTypes.FindAsync(stype.ServiceTypeID);
+                serviceList.Add(foundService);
+            }
+            contact.ServiceTypes = serviceList;
+
+            if (ModelState.IsValid)
+            {
+                contact.ContactGuid = Guid.NewGuid();
+                contact.RegDate = DateTime.Today;
                 db.Contacts.Add(contact);
                 await db.SaveChangesAsync();
-                var mailsent = await mailService.SendMail(contact);
-                return RedirectToAction("Registration");
+                var mail = new MailService();
+                await mail.SendMail(contact);
+                return Json("Create", JsonRequestBehavior.AllowGet);
             }
-            return View(contact); /* TODO: "error message box" */
+            return Json(contact, JsonRequestBehavior.AllowGet);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

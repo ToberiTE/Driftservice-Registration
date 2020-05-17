@@ -1,6 +1,9 @@
 ﻿function toggleTab(evt, tabName) {
     document.getElementById("searchBox").style.display = "block";
-    document.getElementById("createBtn").style.display = "none";
+    document.getElementById("createContact").style.display = "block";
+    document.getElementById("reloadContacts").style.display = "block";
+    document.getElementById("createService").style.display = "none";
+    document.getElementById("reloadServices").style.display = "none";
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -15,7 +18,10 @@
 }
 document.getElementById("defaultTab").click();
 
-function tabTools() {
+function tabOptions() {
     document.getElementById("searchBox").style.display = "none";
-    document.getElementById("createBtn").style.display = "block";
+    document.getElementById("reloadContacts").style.display = "none";
+    document.getElementById("reloadServices").style.display = "block";
+    document.getElementById("createService").style.display = "block";
+    document.getElementById("createContact").style.display = "none";
 }

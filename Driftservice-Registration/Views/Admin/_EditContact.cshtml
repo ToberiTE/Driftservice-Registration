@@ -1,90 +1,129 @@
 ﻿@model Driftservice_Registration.Models.Contact
 
-<div class="modal-header" style="background: cornflowerblue; color: white;">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div class="modal-header">
     <h4 class="modal-title" id="modalTitle">Ändra Kontakt</h4>
 </div>
+
+@{
+    var serviceList = ViewBag.item;
+}
+
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <div class="modal-body">
-        @Html.AntiForgeryToken()
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.ContactID)
+            @Html.HiddenFor(m => m.ContactID)
+            @Html.HiddenFor(m => m.NotificationType)
+            @Html.HiddenFor(m => m.ContactGuid)
+            @Html.HiddenFor(m => m.RegDate)
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Förnamn</label>
+                    @Html.LabelFor(m => m.FirstName)
                 </div>
                 <div class="col-lg-9">
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control required", id = "editContactName" } })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Efternamn</label>
+                    @Html.LabelFor(m => m.LastName)
                 </div>
                 <div class="col-lg-9">
-                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control required" } })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Företag</label>
+                    @Html.LabelFor(m => m.Business)
                 </div>
                 <div class="col-lg-9">
-                    @Html.EditorFor(model => model.Business, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Business, "", new { @class = "text-danger" })
+                    @Html.EditorFor(m => m.Business, new { htmlAttributes = new { @class = "form-control required" } })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Email</label>
+                    @Html.LabelFor(m => m.Email)
                 </div>
                 <div class="col-lg-9">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control required" } })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Telefon</label>
+                    @Html.LabelFor(m => m.PhoneNumber)
                 </div>
                 <div class="col-lg-9">
-                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    @Html.EditorFor(m => m.PhoneNumber, new { htmlAttributes = new { @class = "form-control required" } })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Kontaktmetod</label>
+                    @Html.LabelFor(m => m.NotificationType)
                 </div>
                 <div class="col-lg-9">
-                    <div class="form-block">
-                        <input type="checkbox" name="EmailChecked" value="true" /><label style="margin-left: 5px; margin-right: 10px">Email</label>
-                        <input type="checkbox" name="SmsChecked" value="true" /><label style="margin-left: 5px">Sms</label><br />
-                        @Html.ValidationMessageFor(model => model.NotificationType, "", new { @class = "text-danger" })
+                    <div class="form-block" id="regCheckGroup">
+                        <input type="checkbox" id="EmailChecked" value="true" /><label style="margin-left: 10px; margin-right: 10px">Email</label>
+                        <input type="checkbox" id="SmsChecked" value="true" /><label style="margin-left: 10px">Sms</label><br />
                     </div>
-                    @Html.ValidationMessageFor(model => model.NotificationType, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-3">
-                    <label>Språk</label>
+                    @Html.LabelFor(m => m.Language)
                 </div>
                 <div class="col-lg-9">
                     @Html.DropDownListFor(m => m.Language, new SelectListItem[]{
                         new SelectListItem() {Text = "Svenska", Value="1"},
                         new SelectListItem() {Text = "Engelska", Value="2"},
                         new SelectListItem() {Text = "Tyska", Value="3"}}, new { @style = "width: 120px; height: 30px; padding: 5px;", @class="form-control" })
-                    @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-6">
+                    <div class="card" style="margin:30px 0">
+                        <ul class="list-group list-group-flush">
+                            @foreach (var item in serviceList)
+                            {
+                                <li class="list-group-item">
+                                    @item.Description
+                                    <label class="checkbox">
+                                        <input type="checkbox" @if (item.IsChecked) { <text> checked</text>} class="check" id="@item.Id" value="true" />
+                                        <span class="success"></span>
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal-footer" style="background: cornflowerblue;">
-        <button class="btn btn-danger" data-dismiss="modal">Avbryt</button>
-        <button class="btn btn-success" onclick="EditContact()">Spara</button>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-success" id="editContactBtn" onclick="EditContact()"><i class="fa fa-check"></i>Spara</a>
+        <a class="btn btn-danger" id="modalCancelBtn" data-dismiss="modal"><i class="fa fa-times"></i>Avbryt</a>
     </div>
 }
+<script>
+    $(document).ready(function () {
+        $(window).keydown(function (e) {
+            if (e.keyCode === 13 || e.keyCode === 10) {
+                e.preventDefault();
+                $('#editContactBtn').click().one();
+                $(this).off();
+            }
+        }).one();
+    }).one();
+</script>
+<style>
+    .error-border {
+        border: 1.5px solid red;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255,0,0,.6);
+    }
+</style>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/checkboxes.js"></script>

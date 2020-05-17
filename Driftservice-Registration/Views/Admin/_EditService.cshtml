@@ -1,0 +1,49 @@
+﻿@model Driftservice_Registration.Models.ServiceType
+
+<div class="modal-header">
+    <h4 class="modal-title" id="modalTitle">Ändra Tjänst</h4>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.HiddenFor(m => m.ServiceTypeID)
+            @Html.HiddenFor(m => m.Contacts)
+            <div class="form-group">
+                <div class="col-lg-3">
+                    <p style="font-weight:600">Beskrivning</p>
+                </div>
+                <div class="col-lg-9">
+                    @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control", id = "editDescription" } })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-3">
+                    <p style="font-weight:600">Visa på sida</p>
+                </div>
+                <div class="col-lg-9">
+                    @Html.DropDownListFor(m => m.PublicServiceType, new SelectListItem[]{
+                        new SelectListItem() {Text = "Nej", Value = "false"},
+                        new SelectListItem() {Text = "Ja", Value = "true"} }, new { @style = "width: 120px; height: 30px; padding: 5px;", @class = "form-control", id = "editPublic" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-success" id="editServiceBtn" onclick="EditServiceType()" data-dismiss="modal"><i class="fa fa-check"></i>Spara</a>
+        <a class="btn btn-danger" id="modalCancelBtn" data-dismiss="modal"><i class="fa fa-times"></i>Avbryt</a>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $(window).keydown(function (e) {
+            if (e.keyCode === 13 || e.keyCode === 10) {
+                e.preventDefault();
+                $('#editServiceBtn').click().one();
+                $(this).off();
+            }
+        }).one();
+    }).one();
+</script>

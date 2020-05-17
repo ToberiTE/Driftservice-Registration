@@ -1,6 +1,8 @@
 namespace Driftservice_Registration.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Script.Serialization;
 
     public partial class ServiceType
     {
@@ -15,6 +17,7 @@ namespace Driftservice_Registration.Models
 
         public bool? PublicServiceType { get; set; }
 
+        [ScriptIgnore]
         public virtual ICollection<Contact> Contacts { get; set; }
     }
 }
