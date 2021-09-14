@@ -24,9 +24,4 @@ Admin page:
 ![Administration](https://user-images.githubusercontent.com/65503426/133174751-a5b7cd46-74f0-4887-8319-b6d3feee2d3f.JPG)
 
 Edit modal example:
-![AdminNyKontakt](https://user-images.githubusercontent.com/65503426/133174847-2fa34c67-f9be-40a6-8af6-edf51d25a9b9.JPG):
-
-
-
-
-
+![AdminNyKontakt](https://user-images.githubusercontent.com/65503426/133174847-2fa34c67-f9be-40a6-8af6-edf51d25a9b9.JPG)
