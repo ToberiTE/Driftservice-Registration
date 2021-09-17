@@ -10,7 +10,7 @@ All client-side data is transferred with AJAX to a fully asynchronous backend.
 
 <b>Frontend</b> - HTML, CSS, Bootstrap, JavaScript & JQuery.
 
-<b>Backend</b> - ASP.NET MVC, MSSQL, Entity Framework.
+<b>Backend</b> - C#, MSSQL, Entity Framework.
 #
 (Note: Page language is swedish).
 
