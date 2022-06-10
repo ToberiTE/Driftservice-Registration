@@ -4,7 +4,7 @@ Customer facing page for subscribing to receive updates concerning maintenance o
 
 Fully functional and responsive client-side validation in required fields along with additional server-side validation for added security.
 
-All client-side data is transferred with AJAX to a fully asynchronous backend.
+All client-side data has AJAX functionality.
 #
 <b>Fullstack application</b>
 
