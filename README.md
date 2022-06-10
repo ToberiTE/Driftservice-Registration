@@ -1,6 +1,6 @@
 # Driftservice-Registration
 
-Customer facing page for registering to receive updates concerning maintenance or downtime of several provided services by "Company X".
+Customer facing page for subscribing to receive updates concerning maintenance or outages of several provided services by "Company".
 
 Fully functional and responsive client-side validation in required fields along with additional server-side validation for added security.
 
